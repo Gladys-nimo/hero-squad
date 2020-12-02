@@ -1,0 +1,60 @@
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+@media (max-width: 720px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh;
+  }
+}
+.hero{
+
+background-size:cover;
+background-repeat:no-repeat;
+}
+nav{
+z-index: 2345;
+font-size: 23px;
+}
+nav a{
+color: red;
+}
+a{
+  text-decoration: none;
+	color: inherit;
+	display: inline-block;
+}
+.btns{
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 5px 20px;
+  font-family: 'Abel', sans-serif;
+  border-radius: 20px;
+  margin-top: 5px;
+
+}
+.btns:hover{
+  background: rgb(0, 0, 0);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.24);
+  color: white;
+}
+.btn-green{
+	background: green;
+	margin-top: 5px;
+}
+.landing-pg h2{
+  z-index: 10;
+	text-align: center;
+	padding: 40px 0;
+}
+.landing-pg h2 a{
+	background: green;
+	color: white;
+	border-radius: 20px;
+}
