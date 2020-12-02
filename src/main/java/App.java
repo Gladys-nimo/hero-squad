@@ -1,32 +1,29 @@
-
 import models.Hero;
 import models.Squad;
 import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import spark.ModelAndView;
-import java.util.ArrayList;
-import java.util.List;
 
-import spark.template.handlebars.HandlebarsTemplateEngine;
 import static spark.Spark.*;
 
+//import java.util.List;
+
 public class App {
+static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567;
+    }
 
 
     public static void main(String[] args) {
-
-        ProcessBuilder process = new ProcessBuilder();
-        Integer port;
-        if (process.environment().get("PORT") != null) {
-            port = Integer.parseInt(process.environment().get("PORT"));
-        }else {
-            port = 4567;
-        }
-        port(port);
-
-        staticFileLocation("/public");
+    port(getHerokuAssignedPort());
+    staticFileLocation("/public");
         Hero.setUpNewHero();
         Hero.setUpNewHero1();
         Squad.setUpNewSquad();
@@ -36,16 +33,16 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/form", (request, response) -> {
+        get("/hero-form", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "form.hbs");
+            return new ModelAndView(model, "hero-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/hero",(request, response) ->{
             Map<String, Object> model = new HashMap<>();
             ArrayList<Hero> hero = Hero.getAllInstances();
             model.put("hero",hero);
-            return new ModelAndView(model, "hero.hbs");
+           return new ModelAndView(model, "hero.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/new/:id",(request, restore) ->{
@@ -63,7 +60,7 @@ public class App {
 
         get("/squad",(request, restore) ->{
             Map<String, Object> model = new HashMap<>();
-            ArrayList<Squad> squads = Squad.getInstances();
+            ArrayList<Squad> squads = (ArrayList<Squad>) Squad.getInstances();
             model.put("squads",squads);
             ArrayList<Hero> members = Hero.getAllInstances();
             model.put("heroes",members);
@@ -76,7 +73,7 @@ public class App {
         post("/squad/new",(request,restore)-> {
             Map<String, Object> model = new HashMap<>();
             String squadName = request.queryParams("squadName");
-            Integer size = Integer.parseInt(request.queryParams("size"));
+            int size = Integer.parseInt(request.queryParams("size"));
             String cause = request.queryParams("cause");
             Squad newSquad = new Squad(squadName,size,cause);
             request.session().attribute("item",squadName);
@@ -107,7 +104,7 @@ public class App {
 
         get("/squad/new/:id",(request,restore)->{
             Map<String, Object> model = new HashMap<>();
-            int id= Integer.parseInt(request.params(":id"));
+            int id = Integer.parseInt(request.params(":id"));
             Squad newSquad = Squad.findSquadById(1);
 //            newSquad.setSquadMembers(newMember);
 //            model.put("item",""());

@@ -11,7 +11,7 @@ public class Squad {
     private int Size;
     private String cause;
     private ArrayList<Hero> squadMembers = new ArrayList<>();
-    private static ArrayList<Squad> instances = new ArrayList<>();
+    private static List<Squad> instances = new ArrayList<>();
 
     public Squad (String name, int size, String cause){
         Name = name;
@@ -45,7 +45,8 @@ public class Squad {
 
         return this.cause;
     }
-    public static ArrayList<Squad> getInstances(){
+    public static List<Squad> getInstances(){
+
         return instances;
     }
     public void setSquadMembers(Hero newMember){
