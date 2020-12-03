@@ -18,25 +18,26 @@ public class SquadTest {
     }
 
     @Test
-    public void newSquad_instantiatesCorrectly_true() {
+    public void newSquad_instantiatesCorrectly() {
         Squad newSquad = Squad.setUpNewSquad();
         assertTrue(newSquad instanceof Squad);
+
     }
 //    @Test
 //    public void newSquadName_getName_String() {
 //        Squad newSquad = Squad.setUpNewSquad();
 //        assertEquals("",newSquad.getName());
 //    }
-//    @Test
-//    public void newSquad_getSquadName_String() {
-//        Squad newSquad = Squad.setUpNewSquad();
-//        assertEquals("",newSquad.getSquadName());
-//    }
-//  @Test
-//    public void newSquad_getSize_Int()  {
-//        Squad newSquad = Squad.setUpNewSquad();
-//        assertEquals(5,newSquad.getSize());
-//    }
+    @Test
+    public void newSquad_getSquadName_String() {
+        Squad newSquad = Squad.setUpNewSquad();
+        assertEquals("Avengers",newSquad.getSquadName());
+    }
+  @Test
+    public void newSquad_getSize_Int()  {
+        Squad newSquad = Squad.setUpNewSquad();
+        assertEquals(5,newSquad.getSize());
+    }
     @Test
     public void newSquad_getPower_String() {
         Squad newSquad = Squad.setUpNewSquad();
@@ -52,10 +53,9 @@ public class SquadTest {
     @Test
     public void newSquad_getSquadMembers_Array() {
         Squad newSquad = Squad.setUpNewSquad();
-        Hero newHero = Hero.setUpNewHero();
-//        Hero newHero1 = Hero.setUpNewHero1();
-        newSquad.setSquadMembers(newHero);
-        assertEquals("Gladys",newSquad.getSquadMembers().get(0).getName());
+        Hero newHero1 = Hero.setUpNewHero1();
+        newSquad.setSquadMembers(newHero1);
+        assertEquals("","",newSquad.getSquadMembers().get(0).getName());
     }
 
     @Test
@@ -70,12 +70,12 @@ public class SquadTest {
 //    @Test
 //    public void addMember_addsMemberToSquad_Hero(){
 //        Hero newHero = Hero.setUpNewHero();
-//       Squad testSquad = Squad.setUpNewSquad();
-//        Squad newSquad = Squad.findSquadById(1);
+//        Squad newSquad = Squad.findSquadById(0);
 //        newSquad.clearAllSquadMembers();
 //        newSquad.getSquadMembers().add(newHero);
 //        newSquad.getSquadMembers().add(newHero);
-//        assertEquals(2,newSquad.getSquadMembers().size());
+//        assertEquals(1,newSquad.getSquadMembers().get(0).getId());
+//
 //    }
 
     @Test

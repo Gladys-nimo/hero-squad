@@ -35,9 +35,11 @@ public class Squad {
         return instances.get(id-1);
     }
     public String getSquadName(){
+
         return this.Name;
     }
     public int getSize() {
+
         return this.Size;
     }
 
@@ -58,17 +60,21 @@ public class Squad {
         return squadMembers;
     }
     public static void clearAllSquads(){
+
         instances.clear();
     }
     public void clearAllSquadMembers(){
+
         getSquadMembers().clear();
     }
 
     public static Squad setUpNewSquad(){
+
         return new Squad("Avengers",5,"Infinity Stone");
     }
-    public static Squad setUpNewSquad1(){
-        return new Squad("GameBoy",5,"PUBG");
-    }
+//    public static Squad setUpNewSquad1(){
+//
+//        return new Squad("GameBoy",5,"PUBG");
+//    }
 
 }

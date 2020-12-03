@@ -78,6 +78,7 @@ static int getHerokuAssignedPort() {
             Squad newSquad = new Squad(squadName,size,cause);
             request.session().attribute("item",squadName);
             model.put("item",request.session().attribute("item"));
+            model.put("newSquad",newSquad);
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -107,7 +108,7 @@ static int getHerokuAssignedPort() {
             int id = Integer.parseInt(request.params(":id"));
             Squad newSquad = Squad.findSquadById(1);
 //            newSquad.setSquadMembers(newMember);
-//            model.put("item",""());
+//
             model.put("newHero",newSquad.getSquadName());
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());

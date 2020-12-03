@@ -62,10 +62,6 @@ public class Hero {
         return new Hero("",23,"","");
     }
 
-    public static Hero setUpNewHero2(){
-
-        return new Hero("Anita",30,"Night Vision","Light");
-    }
 
 
 
