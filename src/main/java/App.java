@@ -20,7 +20,6 @@ static int getHerokuAssignedPort() {
         return 4567;
     }
 
-
     public static void main(String[] args) {
     port(getHerokuAssignedPort());
     staticFileLocation("/public");
