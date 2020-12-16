@@ -37,7 +37,7 @@
                             <br><br>
                             <h3>MEMBERS</h3>
                             <a class="btns" href="/new/member/{{squadId}}">Bind Id</a>
-                            <button class="addMember add-btn" >Add New Member</button>
+<!--                            <button class="addMember add-btn" >Add New Member</button>-->
                             {{#each squadMembers}}
                                 <div class="member-cont">
                                     <h5>Name: {{this.name}}</h5>
@@ -58,7 +58,6 @@
     </section>
 {{/partial}}
 {{#partial "footer"}}
-    <script type="text/javascript" src="/js/jquery-3.4.0.min.js"></script>
-    <script type="text/javascript" src="/js/script.js"></script>
+
 {{/partial}}
 {{> layout.hbs}}
